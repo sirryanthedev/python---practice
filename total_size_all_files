@@ -1,0 +1,12 @@
+# print the sum of the size of all files in the cwd
+
+from os import listdir
+from os.path import getsize
+
+files_cwd = listdir(".")
+total = 0
+
+for file in files_cwd:
+    total += getsize(file)
+
+print(f"Total size: {total}")
