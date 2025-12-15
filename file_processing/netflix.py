@@ -35,7 +35,7 @@ def avg_drama(filename: str) -> float:
         filename (str): name or absolute path of file
 
     Returns:
-        int: average score of genre Drama
+        float: average score of genre Drama
     """
     with open(filename) as fp:
         scores = 0
