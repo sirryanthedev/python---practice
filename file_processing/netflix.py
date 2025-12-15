@@ -28,7 +28,7 @@ def title_best_score(filename: str) -> tuple:
 
         return best_title, best_score
 
-def avg_drama(filename: str) -> int:
+def avg_drama(filename: str) -> float:
     """return the average score of genre Drama
 
     Args:
@@ -45,14 +45,14 @@ def avg_drama(filename: str) -> int:
             title, genre, year, score, date = line.strip().split(",")
 
             if genre == "Drama":
-                drama_count += 1
                 try:
                     score = float(score)
-                    scores += score
                 except ValueError:
                     continue
+                scores += score
+                drama_count += 1
 
-    return f"{(scores / drama_count):.2f}"
+    return float(f"{(scores / drama_count):.2f}")
 
 def append_record(filename: str):
     with open(filename, "a") as fp:
