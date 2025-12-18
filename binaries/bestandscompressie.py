@@ -1,5 +1,5 @@
 # (ex. 5.9. - Bestandscompressie)
-# this exercise has logic which is based on the following exercise: compressie_decompressie.py
+# this exercise has logic which is based on the previous exercise (compressie_decompressie)
 
 from compressie_decompressie import compress, decompress # functions from the file compressie_decompressie.py
 from os.path import exists
