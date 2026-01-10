@@ -4,6 +4,17 @@ from os.path import isdir, isfile, join
 import re, csv
 
 def lees_tijdloze100(root_folder: str) -> Edities:
+    """extract info from root map which contains folders where each folder is named after a year (e.g. 1987), each of those folders contains 100 subfolders named nummer_{x} where x is a number from 1 through 100 and each of those subfolders contains 3 files from which we extract the info
+
+    Args:
+        root_folder (str): folder which contains folders named after years with their subfolders and info (e.g. tijdloze)
+
+    Raises:
+        FileNotFoundError: if artiest.txt or titel.txt or release_jaar.txt not present, raise error
+
+    Returns:
+        Edities: dictionairy[key: year of the folder, value: tuple with info(artiest, titel, release_jaar)]
+    """
     folder_list_1 = listdir(root_folder)
     edities = {}
     for item_1 in folder_list_1:
@@ -41,7 +52,13 @@ def lees_tijdloze100(root_folder: str) -> Edities:
     return edities
 
 def schrijf_tijdloze100(edities: Edities, csv_out: str) -> None:
-    with open(csv_out, "w", newline="", encoding = "utf-8") as fp:
+    """write info from edities to a csv file
+
+    Args:
+        edities (Edities): dictionairy[key: year of the folder, value: tuple with info(artiest, titel, release_jaar)]
+        csv_out (str): output file
+    """
+    with open(csv_out, "a", newline="", encoding = "utf-8") as fp:
         writer = csv.writer(fp, delimiter=";")
         for year in edities.keys():
             for index, value in enumerate(edities[year]):
